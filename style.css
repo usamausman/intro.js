@@ -1,0 +1,397 @@
+:root {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 16px;
+  --code: 'Fira Mono';
+
+  --js: hsl(53, 93%, 54%);
+  --js-mid: hsl(53, 93%, 74%);
+  --js-light: hsl(53, 93%, 89%);
+
+  --text: #222;
+  --text-light: #eee;
+
+  --bg: white;
+  --bg-nav: var(--text);
+  --bg-dark: #252525;
+
+  --line: var(--js);
+
+  --object:   hsl(  9, 94%, 65%);
+  --bool:     hsl( 36, 87%, 54%);
+  --string:   hsl(101, 46%, 59%);
+  --comment:  hsl(120, 55%, 45%);
+  --function: hsl(197, 61%, 54%);
+  --set:      hsl(323, 83%, 61%);
+
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+
+  background: var(--bg);
+
+  display: grid;
+  grid-template:
+    'logo nav' 80px
+    'sidebar content' auto
+    'footer footer' auto / 270px 1fr;
+}
+
+body ::selection {
+  background: var(--js-mid);
+}
+
+body :-moz-selection {
+  background: var(--js-mid);
+}
+
+code::selection, code ::selection {
+  background: var(--bg-dark);
+}
+
+code :-moz-selection {
+  background: var(--bg-dark);
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: currentColor;
+}
+
+/* LOGO */
+
+h1 {
+  grid-area: logo;
+
+  height: 80px;
+  line-height: 80px;
+
+  grid-area: logo;
+  background: var(--js);
+  color: var(--text);
+  margin: 0;
+  padding: 0 1rem;
+  font-size: 2.6rem;
+}
+
+/* NAV */
+
+nav {
+  grid-area: nav;
+  display: flex;
+
+  position: relative;
+}
+
+nav #expand {
+  position: absolute;
+  display: none;
+  visibility: hidden;
+  right: 0;
+  top: 0;
+}
+
+nav label {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+nav ul {
+  width: 100%;
+  height: 100%;
+  background: var(--bg-nav);
+  display: flex;
+  padding: 0;
+  border-collapse: collapse;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+nav ul li {
+  flex: 1;
+  font-size: 1.4rem;
+  color: var(--text-light);
+  list-style: none;
+  text-align: center;
+  padding: 1rem;
+  border-left: none;
+  font-weight: 700;
+}
+
+nav ul li:hover {
+  color: var(--js-mid);
+}
+
+nav ul li.active a {
+  color: var(--js);
+}
+
+/* SIDEBAR */
+
+aside {
+  grid-area: sidebar;
+
+  background: var(--js-light);
+}
+
+aside div {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  padding: 1rem;
+}
+
+aside div h2 {
+  color: var(--text);
+  font-size: 2rem;
+  line-height: 1;
+  padding-bottom: 0.5rem;
+
+  border-bottom: solid 1px var(--line);
+  margin-bottom: 0.25rem;
+}
+
+aside div ul {
+  margin: 0;
+  padding-left: 1rem;
+  font-weight: 700;
+}
+
+aside ul li {
+  list-style: none;
+  color: var(--text);
+  font-size: 1.2rem;
+}
+
+aside > div > ul > li > ul{
+  font-weight: 400;
+}
+
+/* CONTENT */
+
+article {
+  grid-area: content;
+
+  padding: 0 1rem 1rem;
+}
+
+article h2 {
+  line-height: 1.2;
+  font-size: 3rem;
+  padding-top: 1rem;
+}
+
+section {
+  margin-bottom: 1rem;
+}
+
+section:last-child {
+  margin: 0;
+}
+
+section h2, section h3 {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  line-height: 1;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  background: var(--bg);
+  border-bottom: solid 1px var(--line);
+}
+
+section h2 {
+  font-size: 2rem;
+}
+
+section h3 {
+  font-size: 1.3rem;
+}
+
+section h2 + p, section h3 + p {
+   margin-top: 0.25rem;
+}
+
+section span.highlight {
+  background: var(--js-mid);
+}
+
+section a {
+  border-bottom: solid 0.25rem var(--js);
+  transition: background 0.25s ease;
+}
+
+section a:hover {
+  background: var(--js);
+}
+
+/* CODE SEGMENTS */
+
+kbd {
+  font-family: var(--code), monospace;
+}
+
+pre {
+  margin: 0;
+  padding: 1rem;
+  background: var(--bg-dark);
+  border-radius: 0.25rem;
+
+  white-space: pre-wrap;
+}
+
+code {
+  background: var(--bg-dark);
+  border-radius: 0.25rem;
+  color: var(--text-light);
+  font-family: var(--code), monospace;
+  padding: 0 0.2rem;
+  overflow: scroll;
+}
+
+pre code {
+  padding: 0;
+}
+
+code span.code {
+  background: red;
+}
+
+code span.comment {
+  color: var(--comment);
+}
+
+code span.object {
+  font-style: italic;
+  color: var(--object);
+}
+
+code span.function {
+  color: var(--function);
+}
+
+code span.string {
+  color: var(--string);
+}
+
+code span.bool {
+  color: var(--bool);
+}
+
+code span.set {
+  color: var(--set);
+}
+
+/* FOOTER */
+
+footer {
+  grid-area: footer;
+  background: var(--bg-dark);
+  padding: 1rem;
+}
+
+footer p {
+  font-family: var(--code), sans-serif;
+}
+
+@media (max-width: 919px) {
+  body {
+    grid-template:
+    'logo nav' auto
+    'sidebar sidebar' auto
+    'content content' auto
+    'footer footer' auto / auto 1fr;
+  }
+}
+
+@media (max-width: 699px) {
+  :root {
+    font-size: 14px;
+  }
+
+  body {
+    grid-template:
+    'logo' auto
+    'nav' auto
+    'sidebar' auto
+    'content' auto
+    'footer' auto / 1fr;
+  }
+
+  nav ul {
+    flex-direction: column;
+  }
+
+  nav label::before {
+    position: absolute;
+    width: 2rem;
+    height: 100%;
+
+    top: 0;
+    right: 1rem;
+
+    cursor: pointer;
+    visibility: visible;
+
+    color: var(--js);
+    font-size: 2.6rem;
+    font-family: var(--code);
+    line-height: 3.7rem;
+    text-align: center;
+
+    content: '+';
+  }
+
+  nav #expand:checked ~ label::before {
+    content: '-';
+  }
+
+  nav #expand ~ ul li.active {
+    display: block;
+  }
+
+  nav #expand ~ ul li {
+    display: none;
+  }
+
+  nav #expand:checked ~ ul li {
+    display: block;
+  }
+}
+
+.cs30 h1,
+.cs30 h2,
+.cs30 h3,
+.cs30 h4,
+.cs30 h5,
+.cs30 h6,
+.cs30 p {
+  background: red;
+  background: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet);
+  background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
+  background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
+  background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
+  background-image: repeating-linear-gradient(45deg, violet, indigo, blue, green, yellow, orange, red, violet);
+  background-size: 800% 800%;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  animation: rainbow 5s infinite ease;
+}
+
+@keyframes rainbow {
+    0%   { background-position:   0% 50% }
+    50%  { background-position: 100% 25% }
+    100% { background-position:   0% 50% }
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#f7df1e">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono%7CSource+Sans+Pro:400,700">
+  <link rel="stylesheet" href="style.css">
+  <title>intro.JS – Arrays</title>
+</head>
+
+<body>
+  <h1>intro.JS</h1>
+  <nav>
+    <input type="checkbox" id="expand">
+    <label for="expand">Expand</label>
+    <ul>
+      <li><a href="basics.html">Basics</a></li>
+      <li><a href="functions.html">Functions</a></li>
+      <li class="active"><a href="arrays.html">Arrays</a></li>
+      <li><a href="loops.html">Loops</a></li>
+      <li><a href="html.html">HTML</a></li>
+    </ul>
+  </nav>
+  <aside>
+    <div>
+      <h2>Jump to...</h2>
+      <ul>
+        <li><a href="#syntax">Syntax</a></li>
+        <li><a href="#methods">Methods</a></li>
+        <li><a href="#strings">Strings</a></li>
+      </ul>
+    </div>
+  </aside>
+  <article>
+    <h2>Arrays</h2>
+    <section id="syntax">
+      <h2>Syntax</h2>
+
+      <p>Arrays can be declared in JavaScript using <code>[]</code>. Arrays can hold values of any type, and elements
+        can be accessed by using their index.</p>
+      <p><span class="highlight">Note:</span> Computers starts counting at 0, so the first element is at index 0.</p>
+      <pre><code><span class="set">let</span> squares = [1, 4, 9, 16, 24]
+squares[0] <span class="comment">// -> 1</span>
+squares[2] <span class="comment">// -> 9</span>
+squares[4] = 25
+squares[5] <span class="comment">// -> undefined</span>
+squares <span class="comment">// -> [1, 4, 9, 16, 25]</span></code></pre>
+
+      <p>Values can be added to the beginning and end of arrays using <code><span class="function">push</span></code>
+        and <code><span class="function">unshift</span></code>.</p>
+      <pre><code><span class="set">let</span> numbers = [2]
+numbers.<span class="function">unshift</span>(1)
+numbers.<span class="function">push</span>(3)
+numbers <span class="comment">// -> [1, 2, 3]</span></code></pre>
+    </section>
+
+    <section id="methods">
+      <h2>Methods</h2>
+
+      <p>To run a function on every element in an array, we can use the <a
+          href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach"><code><span class="function">forEach</span></code>
+          function</a>
+        function, which takes a function as an argument and runs it on every element in an array.</p>
+      <p><span class="highlight">Note:</span>
+        <code><span class="object">console.</span><span class="function">log</span></code> is a useful way to print to
+        the console.</p>
+      <pre><code><span class="set">let</span> numbers = [1, 2, 3, 4, 5, 6]
+
+numbers.<span class="function">forEach</span>(<span class="object">console.</span><span class="function">log</span>)
+<span class="comment">// -> 1</span>
+<span class="comment">// -> 2</span>
+<span class="comment">// -> 3</span>
+<span class="comment">// -> 4</span>
+<span class="comment">// -> 5</span>
+<span class="comment">// -> 6</span></code></pre>
+
+      <p>To run a function on every element in an array and create a new array of the output, we can use the <a
+          href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map"><code><span class="function">map</span></code>
+          function</a>
+        function, which takes a function as an argument, maps it over the array and <span class="highlight">returns a
+          new array</span>.</p>
+      <pre><code><span class="set">const</span> square = (n) => n * n
+<span class="set">let</span> numbers = [1, 2, 3, 4, 5, 6]
+
+numbers.<span class="function">map</span>(square) <span class="comment">// -> [1, 4, 9, 16, 25, 36]</span>
+numbers <span class="comment">// -> [1, 2, 3, 4, 5, 6]</span></code></pre>
+
+      <p>To run a function on only some elements of an array, we can use the
+        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter"><code><span class="function">filter</span></code>
+          function</a>
+        function, which takes a function as an argument, uses it to filter the array and <span class="highlight">returns
+          a new array</span>.</p>
+      <pre><code><span class="set">const</span> isEven = (n) => n % 2
+numbers.<span class="function">filter</span>(isEven) <span class="comment">// -> [2, 4, 6]</span>
+numbers <span class="comment">// -> [1, 2, 3, 4, 5, 6]</span></code></pre>
+
+      <p>To reduce an array to a single value, we can use the
+        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce"><code><span class="function">reduce</span></code>
+          function</a>, which takes a function as an argument, uses it to reduce the array and <span
+          class="highlight">returns
+          a single value</span>.</p>
+      <pre><code><span class="set">const</span> sum = (total, n) => total + n
+numbers.<span class="function">reduce</span>(sum, 0) <span class="comment">// -> 21</span></code></pre>
+
+      <p>Combining all these ideas, we can create powerful code.</p>
+      <pre><code><span class="comment">// take the even numbers, square them and take their sum</span>
+numbers.<span class="function">filter</span>(<span class="function">isEven</span>).<span class="function">map</span>(<span class="function">square</span>).<span class="function">reduce</span>(<span class="function">sum</span>, 0) <span class="comment">// -> 56</span></code></pre>
+    </section>
+
+    <section id="strings">
+      <h2>Strings</h2>
+
+      <p>In JavaScript, characters and sentences are represented by strings. Characters in the string can be referred to
+        by their index, similar to arrays. You can also get a string's length with the string's <code>length</code>
+        property.</p>
+      <pre><code><span class="set">const</span> hello = <span class="string">"Hello, World!"</span>
+hello <span class="comment">// -> "Hello, World!"</span>
+hello[0] <span class="comment">// -> "H"</span>
+
+hello.length <span class="comment">// -> 13</span>
+hello[hello.length - 1] <span class="comment">// -> "!"</span></code></pre>
+      <p><span class="highlight">Note:</span> the indexes of the characters in <code>hello</code> start from 0, so the
+        last character is at <code>hello.length - 1</code>.</p>
+
+      <p>You can also extract substrings from a string using the <code><span class="function">substring</span></code>
+        function, which takes a start index and an optional end index. The string returned will be from the start index
+        <span class="highlight">up to, but not including</span> the end index. If an end index is not provided, it will
+        go to the end of the provided string.</p>
+      <p>Strings can also be added together, or concatenated, using a <code>+</code>.</p>
+      <pre><code>hello.<span class="function">substring</span>(7) <span class="comment">// -> "World!"</span>
+hello.<span class="function">substring</span>(3, 10) <span class="comment">// -> "lo, Wor"</span>
+hello.<span class="function">substring</span>(0, 5) <span class="comment">// -> "Hello"</span>
+hello.<span class="function">substring</span>(0, 5) + hello.<span class="function">substring</span>(12) <span class="comment">// -> "Hello!"</span></code></pre>
+    </section>
+  </article>
+
+  <footer>
+    <code><span class="object">this.</span>copyright <span class="comment">// -> "Usama Usman – 2019"</span></code>
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#f7df1e">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono%7CSource+Sans+Pro:400,700">
+  <link rel="stylesheet" href="style.css">
+  <title>intro.JS – Basics</title>
+</head>
+
+<body>
+  <h1>intro.JS</h1>
+  <nav>
+    <input type="checkbox" id="expand">
+    <label for="expand">Expand</label>
+    <ul>
+      <li class="active"><a href="basics.html">Basics</a></li>
+      <li><a href="functions.html">Functions</a></li>
+      <li><a href="arrays.html">Arrays</a></li>
+      <li><a href="loops.html">Loops</a></li>
+      <li><a href="html.html">HTML</a></li>
+    </ul>
+  </nav>
+  <aside>
+    <div>
+      <h2>Jump to...</h2>
+      <ul>
+        <li><a href="#intro">Introduction</a></li>
+        <li><ul>
+          <li><a href="#running">Running Examples</a></li>
+        </ul></li>
+        <li><a href="#comments">Comments</a></li>
+        <li><a href="#math">Math</a></li>
+        <li><a href="#variables">Variables</a></li>
+        <li><a href="#objects">Objects</a></li>
+      </ul>
+    </div>
+  </aside>
+  <article>
+    <h2>Basics</h2>
+    <section id="intro">
+      <h2>Introduction</h2>
+
+      <p>JavaScript, or JS, is defined as an <span class="highlight">interpreted scripting language</span>, but what
+        does this mean?</p>
+      <p> An interpreted language is parsed and run by an interpreter, so it does not need to be compiled, like C or
+        Java. Also, as a scripting language, it is very easy to use for simple tasks such as running animations and
+        adding functionality to webpages.
+      </p>
+      <p>However, JavaScript is <span class="highlight">not just for webpages</span>. Through the use of JavaScript
+        runtimes such as <a href="https://nodejs.org/en/">node.js</a>, it can
+        be used to host websites and even runs applications, such as <a href="https://discordapp.com/">Discord</a> and
+        <a href="https://code.visualstudio.com">Visual Studio Code</a>.
+      </p>
+      <p>This introduction to JS will cover the basic principles and concepts you can use to write your very own
+        programs.</p>
+    </section>
+
+    <section id="running">
+      <h3>Running Examples</h3>
+
+      <p>All of the examples shown here can be copied and run within the Console in your browser's Developer Tools.</p>
+      <p><b>Chrome:</b> <kbd>Ctrl+Shift+J</kbd> (<kbd>Cmd+Alt+J</kbd> on Mac) or Options → More Tools → Developer Tools
+        → Console</p>
+      <p><b>Firefox:</b> <kbd>Ctrl+Shift+K</kbd> (<kbd>Cmd+Alt+K</kbd> on Mac) or Options → Web Developer → Web Console
+      </p>
+      <p><b>Safari:</b> <a
+          href="https://support.apple.com/en-gb/guide/safari/use-the-developer-tools-in-the-develop-menu-sfri20948/mac">See
+          here</a></p>
+
+      <p>They can also be run online on <a href="https://repl.it/languages/javascript">repl.it</a> or on your computer
+        with <a href="https://nodejs.org/en/">node.js</a>.</p>
+    </section>
+
+    <section id="comments">
+      <h2>Comments</h2>
+
+      <p>To write comments in your code, you can use <code>//</code> and <code>/* ... */</code>.</p>
+      <p><span class="highlight">Note:</span> I will be using comments to show the outputs of running the code examples.
+      </p>
+      <pre><code><span class="comment">// single line comment</span>
+<span class="comment">/* multi</span>
+<span class="comment">   line</span>
+<span class="comment">   comment */</span>
+code <span class="comment">// -> output</span></code></pre>
+    </section>
+
+    <section id="math">
+      <h2>Math</h2>
+
+      <p>JavaScript supports a number of basic math operations:</p>
+      <pre><code>2 + 3 <span class="comment">// -> 5</span>
+7 - 4 <span class="comment">// -> 3</span>
+5 * 7 <span class="comment">// -> 35</span>
+2 + 3 * 7 - 4 <span class="comment">// -> 19</span>
+(2 + 3) * (7 - 4) <span class="comment">// -> 35</span>
+
+10 / 3 <span class="comment">// -> 3.33333...</span>
+2.5 * 7.3 <span class="comment">// -> 18.25</span></code></pre>
+
+      <p>It also supports some more complicated operations, such as <code>%</code> and <code>**</code>, which are modulo
+        and exponentiation.</p>
+      <p><span class="highlight">Note:</span> Modulo is defined as remainder after division, which can be useful, for
+        example, to determine if a number is even.</p>
+      <pre><code>22 % 7 <span class="comment">// -> 1</span>
+5 % 2 <span class="comment">// -> 0</span>
+12 ** 3 + 1 ** 3 <span class="comment">// -> 1729</span></code></pre>
+
+      <p>Using the <code>Math</code> library, other important functions can also be used.</p>
+      <pre><code><span class="object">Math.</span>PI <span class="comment">// -> 3.14159...</span>
+<span class="object">Math.</span><span class="function">sqrt</span>(24) <span class="comment">// -> 4.89897...</span>
+
+<span class="object">Math.</span><span class="function">random</span>() <span class="comment">// -> 0.86235...</span>
+<span class="object">Math.</span><span class="function">random</span>() <span class="comment">// -> 0.98774...</span>
+<span class="object">Math.</span><span class="function">random</span>() <span class="comment">// -> 0.63295...</span></code></pre>
+    </section>
+
+    <section id="variables">
+      <h2>Variables</h2>
+
+      <p>In JavaScript, variables can be declared with <code>let</code>. Variable names can be any combination of
+        letters and numbers, but cannot start with a number.</p>
+      <p><span class="highlight">Note:</span> A variable cannot be used before it is declared.</p>
+      <pre><code><span class="set">let</span> wheels = 4
+wheels * 5 <span class="comment">// -> 20</span>
+
+seven * 5 <span class="comment">// -> ReferenceError: seven is not defined</span>
+<span class="set">let</span> seven = 7</code></pre>
+
+      <p>You can also use basic mathematical operators to update variables by appending an <code>=</code> to the
+        operator. As incrementing and decrementing are common operations, you can use the shorter <code>++</code> and
+        <code>--</code> operators.</p>
+      <pre><code><span class="set">let</span> n = 1
+n += 2 <span class="comment">// -> 3</span>
+n--
+n <span class="comment">// -> 2</span>
+n *= 6 <span class="comment">// -> 12</span>
+n /= 3 <span class="comment">// -> 4</span>
+n %= 3 <span class="comment">// -> 1</span></code></pre>
+
+      <p>Variables can also be declared with <code>const</code> to make them constant. This is useful for variables that
+        must be used in multiple files. It is also convention for the name to be capitalised.</p>
+      <pre><code><span class="set">const</span> DNA_STRANDS = 2
+DNA_STRANDS = 3 <span class="comment">// -> TypeError: Assignment to constant variable</span></code></pre>
+
+      <p>To represent values of yes/no or on/off, we can use <code><span class="bool">true</span></code> and
+        <code><span class="bool">false</span></code>.</p>
+      <p>We can also use Boolean operations: <code>!</code> for negation, <code>&&</code> for <code>AND</code> and
+        <code>||</code> for <code>OR</code>.</p>
+      <pre><code><span class="set">let</span> computerIsOn = <span class="bool">true</span>
+<span class="set">let</span> computerIsOff = !computerIsOn
+computerIsOff <span class="comment">// -> false</span></code></pre>
+    </section>
+
+    <section id="objects">
+      <h2>Objects</h2>
+
+      <p>Objects can be declared by using curly brackets. To check if an object has a property, you can use
+        <code><span class="object">object.</span><span class="function">hasOwnProperty</span>(property)</code>.</p>
+      <pre><code><span class="set">let</span> <span class="object">ferrari</span> = { wheels: 4, zeroToSixtyIn: 3.5 }
+<span class="object">ferrari.</span>isFast = <span class="bool">true</span>
+<span class="object">ferrari.</span>wheels <span class="comment">// -> 4</span>
+<span class="object">ferrari.</span><span class="function">hasOwnProperty</span>(<span class="string">"isCamel"</span>) <span class="comment">// -> false</span>
+<span class="object">ferrari</span> <span class="comment">// -> {wheels: 4, zeroToSixtyIn: 3.5, isFast: true}</span></code></pre>
+    </section>
+  </article>
+
+  <footer>
+    <code><span class="object">this.</span>copyright <span class="comment">// -> "Usama Usman – 2019"</span></code>
+  </footer>
+</body>
+
+</html>
