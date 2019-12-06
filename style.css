@@ -3,6 +3,7 @@
   font-size: 16px;
   --code: 'Fira Mono';
 
+  --js-dark: hsl(53, 60%, 55%);
   --js: hsl(53, 93%, 54%);
   --js-mid: hsl(53, 93%, 74%);
   --js-light: hsl(53, 93%, 89%);
@@ -13,6 +14,7 @@
   --bg: white;
   --bg-nav: var(--text);
   --bg-dark: #252525;
+  --bg-darker: #111;
 
   --line: var(--js);
 
@@ -42,16 +44,16 @@ body ::selection {
   background: var(--js-mid);
 }
 
-body :-moz-selection {
+body ::-moz-selection {
   background: var(--js-mid);
 }
 
 code::selection, code ::selection {
-  background: var(--bg-dark);
+  background: var(--bg-darker);
 }
 
-code :-moz-selection {
-  background: var(--bg-dark);
+code::-moz-selection, code ::-moz-selection {
+  background: var(--bg-darker);
 }
 
 p, h1, h2, h3, h4, h5, h6 {
@@ -243,30 +245,104 @@ kbd {
   font-family: var(--code), monospace;
 }
 
-pre {
-  margin: 0;
-  padding: 1rem;
-  background: var(--bg-dark);
-  border-radius: 0.25rem;
-
-  white-space: pre-wrap;
-}
-
 code {
   background: var(--bg-dark);
   border-radius: 0.25rem;
   color: var(--text-light);
   font-family: var(--code), monospace;
   padding: 0 0.2rem;
-  overflow: scroll;
 }
 
-pre code {
+/* CODE SAMPLE BLOCKS */
+
+code.sample {
+  margin: 0;
   padding: 0;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  background: var(--bg-dark);
+  border-radius: 0.25rem;
+
+  overflow: hidden;
 }
 
-code span.code {
-  background: red;
+code.sample > * {
+  overflow-x: scroll;
+}
+
+code.dontrun {
+  grid-template-columns: 1fr;
+}
+
+code.sample pre {
+  white-space: pre-wrap;
+
+  margin: 0;
+  padding: 1rem;
+}
+
+div.sidebar.hidden {
+  display: none;
+}
+
+code.sample div.sidebar {
+  border-radius: 0;
+  background: var(--js-mid);
+  color: var(--text);
+
+  padding: 1rem;
+}
+
+div.sidebar::selection, div.sidebar ::selection {
+  background: var(--js-dark);
+}
+
+div.sidebar::-moz-selection {
+  background: var(--js-dark);
+}
+
+div.sidebar button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+  border: none;
+  border-radius: 0.25rem;
+
+  padding: 0.5rem 1rem;
+
+  font: inherit;
+
+  color: var(--text);
+  background: var(--js);
+
+  margin-bottom: 1rem;
+}
+
+div.sidebar button svg.run {
+  fill: currentColor;
+
+  padding-right: 0.5rem;
+
+  width: 1rem;
+  height: 1rem;
+}
+
+code.results {
+  padding: 0;
+  border-radius: 0;
+  background: unset;
+  color: var(--text);
+  white-space: pre-wrap;
+}
+
+code span.hidden {
+  display: none;
+}
+
+code span.error {
+  color: red;
 }
 
 code span.comment {
@@ -304,6 +380,20 @@ footer {
 
 footer p {
   font-family: var(--code), sans-serif;
+}
+
+input {
+  margin: 0.25rem 0;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  /* border: none; */
+  border: solid 0.125rem var(--bg-dark);
+
+  background: var(--text-light);
+
+  color: var(--text);
+  font-family: 'Fira Code', monospace;
+  font-size: 1.2rem;
 }
 
 @media (max-width: 919px) {
@@ -369,6 +459,11 @@ footer p {
   nav #expand:checked ~ ul li {
     display: block;
   }
+
+  code.sample {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
 }
 
 .cs30 h1,
@@ -378,20 +473,60 @@ footer p {
 .cs30 h5,
 .cs30 h6,
 .cs30 p {
-  background: red;
-  background: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet);
-  background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
-  background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
-  background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
-  background-image: repeating-linear-gradient(45deg, violet, indigo, blue, green, yellow, orange, red, violet);
-  background-size: 800% 800%;
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
   animation: rainbow 5s infinite ease;
 }
 
 @keyframes rainbow {
-    0%   { background-position:   0% 50% }
-    50%  { background-position: 100% 25% }
-    100% { background-position:   0% 50% }
+    0%   { color: red; }
+    20%   { color: orange; }
+    40%   { color: yellowgreen; }
+    60%   { color: green; }
+    80%   { color: blue; }
+    100%   { color: red; }
+}
+
+@media print {
+  :root {
+    font-size: 20px;
+
+    --text-light: --text;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  body {
+    grid-template:
+      'content' auto / auto;
+  }
+
+  h1, nav, aside, footer {
+    display: none;
+  }
+
+  section h2, section h3 {
+    position: initial;
+  }
+
+  code, code.sample {
+    background: white;
+    box-shadow: inset 0 0 0 0.125rem var(--text);
+  }
+
+  code:not(.sample) {
+    padding: 0.125rem 0.25rem;
+  }
+
+  pre {
+    background: none;
+  }
+
+  code.sample {
+    grid-template-columns: 1fr;
+  }
+
+  code.sample .sidebar {
+    display: none;
+  }
 }

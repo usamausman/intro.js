@@ -22,6 +22,7 @@
       <li><a href="arrays.html">Arrays</a></li>
       <li><a href="loops.html">Loops</a></li>
       <li><a href="html.html">HTML</a></li>
+      <li><a href="apis.html">APIs</a></li>
     </ul>
   </nav>
   <aside>
@@ -29,9 +30,11 @@
       <h2>Jump to...</h2>
       <ul>
         <li><a href="#intro">Introduction</a></li>
-        <li><ul>
-          <li><a href="#running">Running Examples</a></li>
-        </ul></li>
+        <li>
+          <ul>
+            <li><a href="#running">Running Examples</a></li>
+          </ul>
+        </li>
         <li><a href="#comments">Comments</a></li>
         <li><a href="#math">Math</a></li>
         <li><a href="#variables">Variables</a></li>
@@ -62,7 +65,7 @@
     <section id="running">
       <h3>Running Examples</h3>
 
-      <p>All of the examples shown here can be copied and run within the Console in your browser's Developer Tools.</p>
+      <p>All code examples on this website can be run inline by clicking on the RUN button. They can also be copied and run within the Console in your browser's Developer Tools.</p>
       <p><b>Chrome:</b> <kbd>Ctrl+Shift+J</kbd> (<kbd>Cmd+Alt+J</kbd> on Mac) or Options → More Tools → Developer Tools
         → Console</p>
       <p><b>Firefox:</b> <kbd>Ctrl+Shift+K</kbd> (<kbd>Cmd+Alt+K</kbd> on Mac) or Options → Web Developer → Web Console
@@ -81,41 +84,43 @@
       <p>To write comments in your code, you can use <code>//</code> and <code>/* ... */</code>.</p>
       <p><span class="highlight">Note:</span> I will be using comments to show the outputs of running the code examples.
       </p>
-      <pre><code><span class="comment">// single line comment</span>
+      <code class="sample dontrun"><pre><span class="comment">// single line comment</span>
 <span class="comment">/* multi</span>
 <span class="comment">   line</span>
 <span class="comment">   comment */</span>
-code <span class="comment">// -> output</span></code></pre>
+code <span class="comment">// -> output</span></pre></code>
     </section>
 
     <section id="math">
       <h2>Math</h2>
 
       <p>JavaScript supports a number of basic math operations:</p>
-      <pre><code>2 + 3 <span class="comment">// -> 5</span>
-7 - 4 <span class="comment">// -> 3</span>
-5 * 7 <span class="comment">// -> 35</span>
-2 + 3 * 7 - 4 <span class="comment">// -> 19</span>
-(2 + 3) * (7 - 4) <span class="comment">// -> 35</span>
+      <code class="sample"><pre><span class="hidden">console.log(</span>2 + 3<span class="hidden">)</span> <span class="comment">// -> 5</span>
+<span class="hidden">console.log(</span>7 - 4<span class="hidden">)</span> <span class="comment">// -> 3</span>
+<span class="hidden">console.log(</span>5 * 7<span class="hidden">)</span> <span class="comment">// -> 35</span>
+<span class="hidden">console.log(</span>2 + 3 * 7 - 4<span class="hidden">)</span> <span class="comment">// -> 19</span>
+<span class="hidden">console.log(</span>(2 + 3) * (7 - 4)<span class="hidden">)</span> <span class="comment">// -> 15</span>
 
-10 / 3 <span class="comment">// -> 3.33333...</span>
-2.5 * 7.3 <span class="comment">// -> 18.25</span></code></pre>
+<span class="hidden">console.log(</span>10 / 3<span class="hidden">)</span> <span class="comment">// -> 3.33333...</span>
+<span class="hidden">console.log(</span>2.5 * 7.3<span class="hidden">)</span> <span class="comment">// -> 18.25</span>
+</pre></code>
 
       <p>It also supports some more complicated operations, such as <code>%</code> and <code>**</code>, which are modulo
         and exponentiation.</p>
       <p><span class="highlight">Note:</span> Modulo is defined as remainder after division, which can be useful, for
         example, to determine if a number is even.</p>
-      <pre><code>22 % 7 <span class="comment">// -> 1</span>
-5 % 2 <span class="comment">// -> 0</span>
-12 ** 3 + 1 ** 3 <span class="comment">// -> 1729</span></code></pre>
+      <code class="sample"><pre><span class="hidden">console.log(</span>22 % 7<span class="hidden">)</span> <span class="comment">// -> 1</span>
+<span class="hidden">console.log(</span>4 % 2<span class="hidden">)</span> <span class="comment">// -> 0</span>
+<span class="hidden">console.log(</span>12 ** 3 + 1 ** 3<span class="hidden">)</span> <span class="comment">// -> 1729</span></pre></code>
 
       <p>Using the <code>Math</code> library, other important functions can also be used.</p>
-      <pre><code><span class="object">Math.</span>PI <span class="comment">// -> 3.14159...</span>
-<span class="object">Math.</span><span class="function">sqrt</span>(24) <span class="comment">// -> 4.89897...</span>
+      <code
+        class="sample"><pre><span class="hidden">console.log(</span><span class="object">Math.</span>PI<span class="hidden">)</span> <span class="comment">// -> 3.14159...</span>
+<span class="hidden">console.log(</span><span class="object">Math.</span><span class="function">sqrt</span>(24)<span class="hidden">)</span> <span class="comment">// -> 4.89897...</span>
 
-<span class="object">Math.</span><span class="function">random</span>() <span class="comment">// -> 0.86235...</span>
-<span class="object">Math.</span><span class="function">random</span>() <span class="comment">// -> 0.98774...</span>
-<span class="object">Math.</span><span class="function">random</span>() <span class="comment">// -> 0.63295...</span></code></pre>
+<span class="hidden">console.log(</span><span class="object">Math.</span><span class="function">random</span>()<span class="hidden">)</span> <span class="comment">// -> 0.86235...</span>
+<span class="hidden">console.log(</span><span class="object">Math.</span><span class="function">random</span>()<span class="hidden">)</span> <span class="comment">// -> 0.98774...</span>
+<span class="hidden">console.log(</span><span class="object">Math.</span><span class="function">random</span>()<span class="hidden">)</span> <span class="comment">// -> 0.63295...</span></pre></code>
     </section>
 
     <section id="variables">
@@ -124,35 +129,37 @@ code <span class="comment">// -> output</span></code></pre>
       <p>In JavaScript, variables can be declared with <code>let</code>. Variable names can be any combination of
         letters and numbers, but cannot start with a number.</p>
       <p><span class="highlight">Note:</span> A variable cannot be used before it is declared.</p>
-      <pre><code><span class="set">let</span> wheels = 4
-wheels * 5 <span class="comment">// -> 20</span>
+      <code class="sample"><pre><span class="set">let</span> wheels = 4
+<span class="hidden">console.log(</span>wheels * 5<span class="hidden">)</span> <span class="comment">// -> 20</span>
 
-seven * 5 <span class="comment">// -> ReferenceError: seven is not defined</span>
-<span class="set">let</span> seven = 7</code></pre>
+seven * 5 <span class="comment">// -> ReferenceError: Cannot access 'seven' before initialization</span>
+<span class="set">let</span> seven = 7</pre></code>
 
       <p>You can also use basic mathematical operators to update variables by appending an <code>=</code> to the
         operator. As incrementing and decrementing are common operations, you can use the shorter <code>++</code> and
         <code>--</code> operators.</p>
-      <pre><code><span class="set">let</span> n = 1
-n += 2 <span class="comment">// -> 3</span>
+      <code
+        class="sample"><pre><span class="set">let</span> n = 1
+<span class="hidden">console.log(</span>n += 2<span class="hidden">)</span> <span class="comment">// -> 3</span>
 n--
-n <span class="comment">// -> 2</span>
-n *= 6 <span class="comment">// -> 12</span>
-n /= 3 <span class="comment">// -> 4</span>
-n %= 3 <span class="comment">// -> 1</span></code></pre>
+<span class="hidden">console.log(</span>n<span class="hidden">)</span> <span class="comment">// -> 2</span>
+<span class="hidden">console.log(</span>n *= 6<span class="hidden">)</span> <span class="comment">// -> 12</span>
+<span class="hidden">console.log(</span>n /= 3<span class="hidden">)</span> <span class="comment">// -> 4</span>
+<span class="hidden">console.log(</span>n %= 3<span class="hidden">)</span> <span class="comment">// -> 1</span></pre></code>
 
       <p>Variables can also be declared with <code>const</code> to make them constant. This is useful for variables that
         must be used in multiple files. It is also convention for the name to be capitalised.</p>
-      <pre><code><span class="set">const</span> DNA_STRANDS = 2
-DNA_STRANDS = 3 <span class="comment">// -> TypeError: Assignment to constant variable</span></code></pre>
+      <code class="sample"><pre><span class="set">const</span> DNA_STRANDS = 2
+DNA_STRANDS = 3 <span class="comment">// -> TypeError: Assignment to constant variable</span></pre></code>
 
       <p>To represent values of yes/no or on/off, we can use <code><span class="bool">true</span></code> and
         <code><span class="bool">false</span></code>.</p>
       <p>We can also use Boolean operations: <code>!</code> for negation, <code>&&</code> for <code>AND</code> and
         <code>||</code> for <code>OR</code>.</p>
-      <pre><code><span class="set">let</span> computerIsOn = <span class="bool">true</span>
+      <code
+        class="sample"><pre><span class="set">let</span> computerIsOn = <span class="bool">true</span>
 <span class="set">let</span> computerIsOff = !computerIsOn
-computerIsOff <span class="comment">// -> false</span></code></pre>
+<span class="hidden">console.log(</span>computerIsOff<span class="hidden">)</span> <span class="comment">// -> false</span></pre></code>
     </section>
 
     <section id="objects">
@@ -160,17 +167,29 @@ computerIsOff <span class="comment">// -> false</span></code></pre>
 
       <p>Objects can be declared by using curly brackets. To check if an object has a property, you can use
         <code><span class="object">object.</span><span class="function">hasOwnProperty</span>(property)</code>.</p>
-      <pre><code><span class="set">let</span> <span class="object">ferrari</span> = { wheels: 4, zeroToSixtyIn: 3.5 }
+      <code
+        class="sample"><pre><span class="set">let</span> <span class="object">ferrari</span> = { wheels: 4, zeroToSixtyIn: 3.5 }
 <span class="object">ferrari.</span>isFast = <span class="bool">true</span>
-<span class="object">ferrari.</span>wheels <span class="comment">// -> 4</span>
-<span class="object">ferrari.</span><span class="function">hasOwnProperty</span>(<span class="string">"isCamel"</span>) <span class="comment">// -> false</span>
-<span class="object">ferrari</span> <span class="comment">// -> {wheels: 4, zeroToSixtyIn: 3.5, isFast: true}</span></code></pre>
+<span class="hidden">console.log(</span><span class="object">ferrari.</span>wheels<span class="hidden">)</span> <span class="comment">// -> 4</span>
+<span class="hidden">console.log(</span><span class="object">ferrari.</span><span class="function">hasOwnProperty</span>(<span class="string">"isCamel"</span>)<span class="hidden">)</span> <span class="comment">// -> false</span>
+<span class="hidden">console.log(</span><span class="object">ferrari</span><span class="hidden">)</span> <span class="comment">// -> {wheels: 4, zeroToSixtyIn: 3.5, isFast: true}</span></pre></code>
     </section>
   </article>
 
   <footer>
     <code><span class="object">this.</span>copyright <span class="comment">// -> "Usama Usman – 2019"</span></code>
   </footer>
+
+  <div class="sidebar hidden">
+    <button>
+      <svg class="run" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 110">
+        <path d="M960,492.369l55,95.263H905Z" transform="translate(587.631 -905) rotate(90)" />
+      </svg> RUN
+    </button>
+    <code class="results"></code>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 
 </html>

@@ -22,6 +22,7 @@
       <li><a href="arrays.html">Arrays</a></li>
       <li class="active"><a href="loops.html">Loops</a></li>
       <li><a href="html.html">HTML</a></li>
+      <li><a href="apis.html">APIs</a></li>
     </ul>
   </nav>
   <aside>
@@ -30,9 +31,11 @@
       <ul>
         <li><a href="#while"><code>while</code> loops</a></li>
         <li><a href="#for"><code>for</code> loops</a></li>
-        <li><ul>
-          <li><a href="#forof"><code>for of</code> loops</a></li>
-        </ul></li>
+        <li>
+          <ul>
+            <li><a href="#forof"><code>for of</code> loops</a></li>
+          </ul>
+        </li>
         <li><a href="#arrays">Using with Arrays</a></li>
       </ul>
     </div>
@@ -44,7 +47,7 @@
 
       <p>To run code multiple times, we can use loops. A <code>while</code> loop will run until a specified condition is
         false. This can be useful with counters or when reading files.</p>
-      <pre><code><span class="set">let</span> counter = 1
+      <code class="sample"><pre><span class="set">let</span> counter = 1
 <span class="set">let</span> sum = 0
 
 <span class="function">while</span> (counter &lt;= 10) {
@@ -52,7 +55,7 @@
   counter++
 }
 
-sum <span class="comment">// -> 55</span></code></pre>
+<span class="hidden">console.log(</span>sum<span class="hidden">)</span> <span class="comment">// -> 55</span></pre></code>
       <span class="highlight">Note:</span> if your code gets stuck in an infinite loop, make sure you are updating the
       values of the condition.
     </section>
@@ -64,20 +67,20 @@ sum <span class="comment">// -> 55</span></code></pre>
         update statements in one place. The format consists of three statements separated by <code>;</code>s.</p>
       <p><code><span class="function">for</span> (<em>initialisation</em>; <em>condition</em>; <em>update</em>)</code>
       </p>
-      <pre><code><span class="set">let</span> sum = 0
+      <code class="sample"><pre><span class="set">let</span> sum = 0
 
 <span class="function">for</span> (<span class="set">let</span> counter = 1; counter &lt;= 10; counter++) {
   sum += counter
 }
 
-sum <span class="comment">// -> 55</span></code></pre>
+<span class="hidden">console.log(</span>sum<span class="hidden">)</span> <span class="comment">// -> 55</span></pre></code>
     </section>
 
     <section id="forof">
       <h3><code>for of</code> loops</h3>
 
       <p>A <code>for of</code> is a cleaner way to go through the elements of an array.</p>
-      <pre><code><span class="set">const</span> pie = [<span class="string">"May"</span>, <span class="string">"I"</span>, <span class="string">"have"</span>, <span
+      <code class="sample"><pre><span class="set">const</span> pie = [<span class="string">"May"</span>, <span class="string">"I"</span>, <span class="string">"have"</span>, <span
         class="string">"a"</span>, <span class="string">"large"</span>, <span class="string">"container"</span>, <span
         class="string">"of"</span>, <span class="string">"coffee"</span>, <span class="string">"cream"</span>, <span
         class="string">"and"</span>, <span class="string">"sugar"</span>]
@@ -95,7 +98,7 @@ sum <span class="comment">// -> 55</span></code></pre>
 <span class="comment">// -> 6</span>
 <span class="comment">// -> 5</span>
 <span class="comment">// -> 3</span>
-<span class="comment">// -> 5</span></code></pre>
+<span class="comment">// -> 5</span></pre></code>
     </section>
 
     <section id="arrays">
@@ -105,14 +108,14 @@ sum <span class="comment">// -> 55</span></code></pre>
         useful for some situations, such as for sorting algorithms.</p>
       <p><span class="highlight">Note:</span> you can use graves <code>``</code> to interpolate strings and use
         <code>${}</code> to substitute values into the string.</p>
-      <pre><code><span class="set">let</span> n = 5
+      <code class="sample"><pre><span class="set">let</span> n = 5
 <span class="set">let</span> numbers = [5, 7, 3, 4, 2, 1, 6]
 
-<span class="set">let</span> example = <span class="string">`n is ${</span>n<span class="string">} and the array length is ${</span>numbers.length<span class="string">}`</span>
+<span class="set">let</span> example = <span class="string">`n is </span>${n}<span class="string"> and the array length is </span>${numbers.length}<span class="string">`</span>
 <span class="object">console.</span><span class="function">log</span>(example) <span class="comment">// -> "n is 5 and the array length is 7"</span>
 
 <span class="function">for</span> (<span class="set">let</span> i = 0; i &lt; numbers.length; i++) {
-  <span class="object">console.</span><span class="function">log</span>(<span class="string">`[${</span>i<span class="string">}] is ${</span>numbers[i]<span class="string">}`</span>)
+  <span class="object">console.</span><span class="function">log</span>(<span class="string">`[</span>${i}<span class="string">] is </span>${numbers[i]}<span class="string">`</span>)
 }
 
 <span class="comment">// -> [0] is 5</span>
@@ -121,13 +124,24 @@ sum <span class="comment">// -> 55</span></code></pre>
 <span class="comment">// -> [3] is 4</span>
 <span class="comment">// -> [4] is 2</span>
 <span class="comment">// -> [5] is 1</span>
-<span class="comment">// -> [6] is 6</span></code></pre>
+<span class="comment">// -> [6] is 6</span></pre></code>
     </section>
   </article>
 
   <footer>
     <code><span class="object">this.</span>copyright <span class="comment">// -> "Usama Usman – 2019"</span></code>
   </footer>
+
+  <div class="sidebar hidden">
+    <button>
+      <svg class="run" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 110">
+        <path d="M960,492.369l55,95.263H905Z" transform="translate(587.631 -905) rotate(90)" />
+      </svg> RUN
+    </button>
+    <code class="results"></code>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 
 </html>

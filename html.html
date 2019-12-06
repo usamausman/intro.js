@@ -22,6 +22,7 @@
       <li><a href="arrays.html">Arrays</a></li>
       <li><a href="loops.html">Loops</a></li>
       <li class="active"><a href="html.html">HTML</a></li>
+      <li><a href="apis.html">APIs</a></li>
     </ul>
   </nav>
   <aside>
@@ -43,47 +44,64 @@
         as well as their styling and attributes. To select elements on an HTML page, you need to use their CSS
         selectors. For example, to select all links with an <code>external</code> class, you can use
         <code><span class="string">a.external</span></code>.</p>
-      <pre><code><span class="set">let</span> title = <span class="object">document.</span><span class="function">querySelector</span>(<span class="string">"section#dom h2"</span>)
-title.innerText = <span class="string">"DOM Updated"</span> <span class="comment">// -> updates this section's title</span></code></pre>
+      <code class="sample"><pre><span class="set">let</span> title = <span class="object">document.</span><span class="function">querySelector</span>(<span class="string">"section#dom h2"</span>)
+title.innerText = <span class="string">"DOM Updated"</span> <span class="comment">// -> updates this section's title</span></pre></code>
 
       <p>Using <code><span class="function">querySelectorAll</span></code>, we can update multiple elements at once.</p>
       <p><span class="highlight">Note:</span> Use
         <code><span class="object">Array.</span><span class="function">from</span></code> to create arrays from 'almost
-        arrays', such as those returned from <code><span class="object">document.</span><span class="function">querySelectorAll</span></code>.</p>
-      <pre><code><span class="set">let</span> titles = <span class="object">Array.</span><span class="function">from</span>(<span class="object">document.</span><span class="function">querySelectorAll</span>(<span class="string">"section h2, section h3"</span>))
+        arrays', such as those returned from
+        <code><span class="object">document.</span><span class="function">querySelectorAll</span></code>.</p>
+      <code class="sample"><pre><span class="set">let</span> titles = <span class="object">Array.</span><span class="function">from</span>(<span class="object">document.</span><span class="function">querySelectorAll</span>(<span class="string">"section h2, section h3"</span>))
 titles.<span class="function">forEach</span>((<span class="object">el</span>) => <span class="object">el.</span><span class="object">style.</span>color = <span class="string">"red"</span>)
-<span class="comment">// -> changes color of all titles on this page to red </span></code></pre>
+<span class="comment">// -> changes color of all titles on this page to red </span></pre></code>
     </section>
 
     <section id="classes">
       <h2>Classes</h2>
 
-      <p>To change the classes on an element, we can use its <code>classList</code> property, with which we can add, remove and toggle classes.</p>
-      <pre><code><span class="object">document.</span>body.<span class="object">classList.</span><span class="function">toggle</span>(<span class="string">"cs30"</span>)</code></pre>
+      <p>To change the classes on an element, we can use its <code>classList</code> property, with which we can add,
+        remove and toggle classes.</p>
+      <code class="sample"><pre><span class="object">document.</span>body.<span class="object">classList.</span><span class="function">toggle</span>(<span class="string">"cs30"</span>)</pre></code>
     </section>
 
     <section id="eventhandlers">
       <h2>Event Handlers</h2>
 
       <p>JavaScript is also used to respond to events on a webpage, such as hover or click elements.</p>
-      <p><span class="highlight">Note:</span> Events can be scheduled for the future or on set intervals using the <code><span class="function">setTimeout</span></code> and <code><span class="function">setInterval</span></code> functions.</p>
-      <pre><code><span class="set">let</span> logo = <span class="object">document.</span><span class="function">querySelector</span>(<span class="string">"h1"</span>)
+      <p><span class="highlight">Note:</span> Events can be scheduled for the future or on set intervals using the
+        <code><span class="function">setTimeout</span></code> and <code><span class="function">setInterval</span></code>
+        functions.</p>
+      <code class="sample"><pre><span class="set">let</span> title = <span class="object">document.</span><span class="function">querySelector</span>(<span class="string">"section#eventhandlers h2"</span>)
 <span class="set">let</span> greeter = (e) => {
   <span class="object">console.</span><span class="function">log</span>(<span class="string">"Hello from intro.JS!"</span>)
 }
 
-logo.<span class="function">addEventListener</span>(<span class="string">"click"</span>, greeter) <span class="comment">// -> now click on the 'intro.JS' text</span>
+<span class="object">console.</span><span class="function">log</span>(<span class="string">"[adding]"</span>)
+title.<span class="function">addEventListener</span>(<span class="string">"click"</span>, greeter) <span class="comment">// -> now click on the 'Event Handlers' text</span>
 
 <span class="function">setTimeout</span>(() => {
-  logo.<span class="function">removeEventListener</span>(<span class="string">"click"</span>, greeter)
+  <span class="object">console.</span><span class="function">log</span>(<span class="string">"[removing]"</span>)
+  title.<span class="function">removeEventListener</span>(<span class="string">"click"</span>, greeter)
 }, 5000) <span class="comment">// -> removes click handler after 5 seconds</span>
-</code></pre>
+</pre></code>
     </section>
   </article>
 
   <footer>
     <code><span class="object">this.</span>copyright <span class="comment">// -> "Usama Usman – 2019"</span></code>
   </footer>
+
+  <div class="sidebar hidden">
+    <button>
+      <svg class="run" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 110">
+        <path d="M960,492.369l55,95.263H905Z" transform="translate(587.631 -905) rotate(90)" />
+      </svg> RUN
+    </button>
+    <code class="results"></code>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 
 </html>

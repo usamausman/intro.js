@@ -22,6 +22,7 @@
       <li><a href="arrays.html">Arrays</a></li>
       <li><a href="loops.html">Loops</a></li>
       <li><a href="html.html">HTML</a></li>
+      <li><a href="apis.html">APIs</a></li>
     </ul>
   </nav>
   <aside>
@@ -40,49 +41,69 @@
 
       <p>To split up multiple calculations into separate functions, they can be defined in JavaScript with a name and a
         list of arguments:</p>
-      <pre><code><span class="set">const</span> <span class="function">square</span> = (n) => { <span class="comment">// name and an argument 'n'</span>
+      <code
+        class="sample"><pre><span class="set">const</span> <span class="function">square</span> = (n) => { <span class="comment">// name and an argument 'n'</span>
   return n * n
 }
 
 <span class="set">const</span> <span class="function">addOne</span> = (n) => n + 1 <span class="comment">// shorter way to declare a function</span>
 <span class="comment">//                   ^ return is implied here</span>
 
-<span class="function">square</span>(3) <span class="comment">// -> 9</span>
-<span class="function">square</span>(5) <span class="comment">// -> 25</span>
-<span class="function">addOne</span>(6) <span class="comment">// -> 7</span></code></pre>
+<span class="hidden">console.log(</span><span class="function">square</span>(3)<span class="hidden">)</span> <span class="comment">// -> 9</span>
+<span class="hidden">console.log(</span><span class="function">square</span>(5)<span class="hidden">)</span> <span class="comment">// -> 25</span>
+<span class="hidden">console.log(</span><span class="function">addOne</span>(6)<span class="hidden">)</span> <span class="comment">// -> 7</span></pre></code>
 
       <p>Functions can also be chained to run them in a sequence:</p>
-      <pre><code><span class="function">square</span>(<span class="function">square</span>(3)) <span class="comment">// -> 81</span>
+      <code
+        class="sample"><pre><span class="hidden"><span class="set">const</span> <span class="function">square</span> = (n) => {
+  return n * n
+}
 
-<span class="function">addOne</span>(<span class="function">square</span>(3)) <span class="comment">// -> 10</span>
-<span class="function">square</span>(<span class="function">addOne</span>(3)) <span class="comment">// -> 16</span></code></pre>
+<span class="set">const</span> <span class="function">addOne</span> = (n) => n + 1
+</span><span class="hidden">console.log(</span><span class="function">square</span>(<span class="function">square</span>(3))<span class="hidden">)</span> <span class="comment">// -> 81</span>
+
+<span class="hidden">console.log(</span><span class="function">addOne</span>(<span class="function">square</span>(3))<span class="hidden">)</span> <span class="comment">// -> 10</span>
+<span class="hidden">console.log(</span><span class="function">square</span>(<span class="function">addOne</span>(3))<span class="hidden">)</span> <span class="comment">// -> 16</span></pre></code>
     </section>
 
     <section id="multiple_args">
       <h2>Multiple Arguments</h2>
 
       <p>Functions can take multiple arguments, but can <span class="highlight">only return a single output</span>.</p>
-      <pre><code><span class="set">const</span> <span class="function">leftRoot</span> = (a, b, c) => (-b - <span class="object">Math.</span><span class="function">sqrt</span>(b ** 2 - 4 * a * c)) / (2 * a)
+      <code
+        class="sample"><pre><span class="set">const</span> <span class="function">leftRoot</span> = (a, b, c) => (-b - <span class="object">Math.</span><span class="function">sqrt</span>(b ** 2 - 4 * a * c)) / (2 * a)
 <span class="set">const</span> <span class="function">rightRoot</span> = (a, b, c) => (-b + <span class="object">Math.</span><span class="function">sqrt</span>(b ** 2 - 4 * a * c)) / (2 * a)
 
-<span class="function">leftRoot</span>(1, -2, -3) <span class="comment">// -> -1</span>
-<span class="function">rightRoot</span>(1, -2, -3) <span class="comment">// -> 3</span></code></pre>
+<span class="hidden">console.log(</span><span class="function">leftRoot</span>(1, -2, -3)<span class="hidden">)</span> <span class="comment">// -> -1</span>
+<span class="hidden">console.log(</span><span class="function">rightRoot</span>(1, -2, -3)<span class="hidden">)</span> <span class="comment">// -> 3</span></pre></code>
 
       <p>To return multiple outputs, they can be put into an object or an array, which is then returned.</p>
-      <pre><code><span class="set">const</span> <span class="function">solveQuadratic</span> = (a, b, c) => {
+      <code
+        class="sample"><pre><span class="set">const</span> <span class="function">solveQuadratic</span> = (a, b, c) => {
   <span class="set">const</span> discriminant = <span class="object">Math.</span><span class="function">sqrt</span>(b ** 2 - 4 * a * c)
-  <span class="set">let</span> a = (-b - discriminant) / (2 * a)
-  <span class="set">let </span> b = (-b + discriminant) / (2 * a)
-  return { a, b }
+  <span class="set">let</span> left = (-b - discriminant) / (2 * a)
+  <span class="set">let</span> right = (-b + discriminant) / (2 * a)
+  return { left, right }
 }
 
-<span class="function">solveQuadratic</span>(1, -2, -3) <span class="comment">// -> {a: -1, b: 3}</span></code></pre>
+<span class="hidden">console.log(</span><span class="function">solveQuadratic</span>(1, -2, -3)<span class="hidden">)</span> <span class="comment">// -> {left: -1, right: 3}</span></pre></code>
     </section>
   </article>
 
   <footer>
     <code><span class="object">this.</span>copyright <span class="comment">// -> "Usama Usman – 2019"</span></code>
   </footer>
+
+  <div class="sidebar hidden">
+    <button>
+      <svg class="run" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 110">
+        <path d="M960,492.369l55,95.263H905Z" transform="translate(587.631 -905) rotate(90)" />
+      </svg> RUN
+    </button>
+    <code class="results"></code>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 
 </html>
